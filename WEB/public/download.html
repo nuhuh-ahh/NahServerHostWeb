@@ -2,35 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download - NahServerHost</title>
+  <title>Download - Nah Server Host</title>
   <link rel="stylesheet" href="download.css">
 </head>
 <body>
-  <div class="download-container">
-    <h1>🚀 Download NahServerHost</h1>
-    <p>Get the latest version of our server hosting tools.</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/feature">Features</a>
+    <a href="/howtouse">How to Use</a>
+    <a href="/download">Download</a>
+  </nav>
 
-    <button class="download-btn" onclick="openPopup()">⬇ Download Now</button>
+  <h1>⬇ Download</h1>
+  <button id="startDownloadBtn" class="download-btn">Download</button>
+
+  <!-- Popup Progress -->
+  <div id="progressPopup" class="popup hidden">
+    <div class="popup-content">
+      <h2>Preparing download...</h2>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <p id="progressText">0%</p>
+    </div>
   </div>
 
-  <!-- Popup -->
-  <div class="popup" id="popup">
+  <!-- Popup Final Download -->
+  <div id="finalPopup" class="popup hidden">
     <div class="popup-content">
-      <h2>✅ Download Ready!</h2>
-      <p>Your download will start shortly...</p>
-      <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip"" class="popup-download">Start Download</a>
-      <button class="close-btn" onclick="closePopup()">Close</button>
+      <h2>Your download is ready!</h2>
+      <a href="NahServerHost_Setup.exe" class="real-download-btn">Download Now</a>
     </div>
   </div>
 
   <script>
-    function openPopup() {
-      document.getElementById("popup").style.display = "flex";
-    }
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
+    const startBtn = document.getElementById("startDownloadBtn");
+    const progressPopup = document.getElementById("progressPopup");
+    const finalPopup = document.getElementById("finalPopup");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+
+    const steps = [1, 5, 19, 53, 81, 99, 100];
+    let i = 0;
+
+    startBtn.addEventListener("click", () => {
+      progressPopup.classList.remove("hidden");
+      i = 0;
+      progressFill.style.width = "0%";
+      progressText.textContent = "0%";
+
+      const interval = setInterval(() => {
+        if (i < steps.length) {
+          progressFill.style.width = steps[i] + "%";
+          progressText.textContent = steps[i] + "%";
+          i++;
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            progressPopup.classList.add("hidden");
+            finalPopup.classList.remove("hidden");
+          }, 800);
+        }
+      }, 800);
+    });
   </script>
 </body>
 </html>
