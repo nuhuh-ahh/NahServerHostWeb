@@ -137,14 +137,14 @@
       overlay.style.display = 'flex';
       document.body.style.background = 'rgba(0,0,0,0.3)';
 
-      const progressSteps = [1, 5, 19, 26, 41, 69, 91, 99, 100];
+      const progressSteps = [1, 2, 4, 5, 12, 19, 26, 31, 39, 41, 50, 59, 65, 69, 72, 88, 91, 99, 100];
       let i = 0;
 
       function nextStep() {
         if (i < progressSteps.length) {
           progressFill.style.width = progressSteps[i] + '%';
           i++;
-          setTimeout(nextStep, 500);
+          setTimeout(nextStep, 1000);
         } else {
           popupTitle.textContent = 'Files is ready!';
           finalDownloadBtn.classList.add('unlocked');
@@ -155,7 +155,7 @@
     });
 
     finalDownloadBtn.addEventListener('click', () => {
-      window.location.href = '/path-to-your-file.zip'; // Thay link tải về
+      window.location.href = 'https://download1507.mediafire.com/a3eb7xozsvtgVUWhufx1niQ3SiNofgEZzxxcKxVZ0YRozhLHdR9y87STESDknVpsk0yhOO4JyEM0yAytDaOFWhTEPJbsDE-FBGGUl1-kygp8GnkDNeeQWbvLfv0ePIN2qkkyQCl7KoxRyn2DIrWi7BnkaNkcpiaPYDSASPPrIE01/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip'; // Thay link tải về
       overlay.style.display = 'none';
       document.body.style.background = '#fff';
       progressFill.style.width = '0%';
