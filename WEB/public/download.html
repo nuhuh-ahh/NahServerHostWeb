@@ -2,46 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download - Nah Server Host</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download - NahServerHost</title>
+  <link rel="stylesheet" href="download.css">
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/feature">Features</a>
-    <a href="/howtouse">How to Use</a>
-    <a href="/download">Download</a>
-  </nav>
+  <div class="download-container">
+    <h1>🚀 Download NahServerHost</h1>
+    <p>Get the latest version of our server hosting tools.</p>
 
-  <h1>⬇ Download Nah Server Host</h1>
-  <button class="btn" onclick="startDownload()">Download</button>
+    <button class="download-btn" onclick="openPopup()">⬇ Download Now</button>
+  </div>
 
   <!-- Popup -->
-  <div id="popup" class="hidden">
-    <div id="popupContent">
-      <p id="popupText">Preparing your file...</p>
-      <button class="btn" onclick="cancelDownload()">Cancel</button>
-      <a id="realDownloadBtn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
-         class="btn hidden">Click here to download</a>
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>✅ Download Ready!</h2>
+      <p>Your download will start shortly...</p>
+      <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip"" class="popup-download">Start Download</a>
+      <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
   </div>
 
   <script>
-    let timer;
-    function startDownload() {
-      document.getElementById("popup").classList.remove("hidden");
-      document.getElementById("popupText").innerText = "Preparing your file...";
-      document.getElementById("realDownloadBtn").classList.add("hidden");
-
-      timer = setTimeout(() => {
-        document.getElementById("popupText").innerText = "✅ Ready!";
-        document.getElementById("realDownloadBtn").classList.remove("hidden");
-      }, 5000);
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
     }
-
-    function cancelDownload() {
-      clearTimeout(timer);
-      document.getElementById("popup").classList.add("hidden");
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
     }
   </script>
 </body>
