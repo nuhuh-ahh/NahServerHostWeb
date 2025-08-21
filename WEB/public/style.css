@@ -13,7 +13,6 @@ body {
   color: #fff;
   text-align: center;
   min-height: 100vh;
-  transition: background 0.3s;
 }
 
 /* Navigation bar */
@@ -64,6 +63,13 @@ button, .btn {
 button:hover, .btn:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0,255,255,0.6);
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-8px);}
+  60% {transform: translateY(-4px);}
 }
 
 /* Popup overlay */
@@ -132,6 +138,7 @@ button:hover, .btn:hover {
 /* Animations */
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes zoomIn { from { transform: scale(0.8); opacity:0; } to { transform: scale(1); opacity:1; } }
+
 </style>
 </head>
 <body>
@@ -168,6 +175,12 @@ const popupTitle = document.getElementById('popupTitle');
 const finalDownloadBtn = document.getElementById('finalDownloadBtn');
 
 downloadBtn.addEventListener('click', () => {
+  // Thêm animation bounce khi nhấn
+  downloadBtn.style.animation = 'bounce 0.6s';
+  downloadBtn.addEventListener('animationend', () => {
+    downloadBtn.style.animation = '';
+  }, {once:true});
+
   overlay.style.display = 'flex';
 
   const progressSteps = [1, 5, 19, 26, 41, 69, 91, 99, 100];
