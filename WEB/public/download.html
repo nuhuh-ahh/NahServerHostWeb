@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Download - Nah Server Host</title>
-  <link rel="stylesheet" href="download.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav>
@@ -14,11 +14,11 @@
   </nav>
 
   <h1>⬇ Download</h1>
-  <button id="startDownloadBtn" class="download-btn">Download</button>
+  <button id="startDownloadBtn" class="btn">Download</button>
 
   <!-- Popup Progress -->
-  <div id="progressPopup" class="popup hidden">
-    <div class="popup-content">
+  <div id="progressPopup" class="hidden">
+    <div id="popupContent">
       <h2>Preparing download...</h2>
       <div class="progress-bar">
         <div id="progressFill" class="progress-fill"></div>
@@ -27,11 +27,14 @@
     </div>
   </div>
 
-  <!-- Popup Final Download -->
-  <div id="finalPopup" class="popup hidden">
-    <div class="popup-content">
-      <h2>Your download is ready!</h2>
-      <a href="NahServerHost_Setup.exe" class="real-download-btn">Download Now</a>
+  <!-- Popup Final -->
+  <div id="finalPopup" class="hidden">
+    <div id="popupContent">
+      <h2>Your file is ready!</h2>
+      <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip"
+         class="btn" download>Download Now</a>
+      <br>
+      <button class="btn" onclick="closePopup()">Cancel</button>
     </div>
   </div>
 
@@ -65,6 +68,10 @@
         }
       }, 800);
     });
+
+    function closePopup() {
+      finalPopup.classList.add("hidden");
+    }
   </script>
 </body>
 </html>
