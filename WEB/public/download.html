@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download - Nah Server Host</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="space-bg">
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/feature">Features</a>
+      <a href="/howtouse">How to Use</a>
+      <a href="/download" class="active">Download</a>
+    </nav>
+  </header>
+
+  <main class="center">
+    <h1>Download Nah Server Host</h1>
+    <button id="downloadBtn" class="fancy-btn">Download</button>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <h2 id="popupText">Preparing your file...</h2>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <div class="popup-actions">
+        <button id="cancelBtn" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup final download -->
+  <div id="finalPopup" class="popup hidden">
+    <div class="popup-content">
+      <h2>Your file is ready!</h2>
+      <div class="popup-actions">
+        <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip"
+         class="fancy-btn" download>Download Now</a>
+        <button id="closeFinal" class="cancel-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const downloadBtn = document.getElementById("downloadBtn");
+    const popup = document.getElementById("popup");
+    const progress = document.getElementById("progress");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const finalPopup = document.getElementById("finalPopup");
+    const closeFinal = document.getElementById("closeFinal");
+
+    let timer, width = 0;
+
+    downloadBtn.addEventListener("click", () => {
+      popup.classList.remove("hidden");
+      width = 0;
+      progress.style.width = "0%";
+
+      timer = setInterval(() => {
+        width += 20; // 20% mỗi giây
+        progress.style.width = width + "%";
+        if (width >= 100) {
+          clearInterval(timer);
+          popup.classList.add("hidden");
+          finalPopup.classList.remove("hidden");
+        }
+      }, 1000);
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      clearInterval(timer);
+      popup.classList.add("hidden");
+      width = 0;
+      progress.style.width = "0%";
+    });
+
+    closeFinal.addEventListener("click", () => {
+      finalPopup.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>
