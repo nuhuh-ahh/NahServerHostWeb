@@ -2,29 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download - HoaTreeHub</title>
+  <title>Download - Nah Server Host</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <h1>HoaTreeHub</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/download">Download</a>
-      <a href="/feature">Features</a>
-      <a href="/howtouse">How to Use</a>
-    </nav>
-  </header>
+<body class="space-theme">
+  <div class="content">
+    <h1>🚀 Download Center</h1>
+    <p>Click the button below to get your file.</p>
+    <button class="btn" onclick="openPopup()">Download</button>
+  </div>
 
-  <section>
-    <h2>🚀 Download HoaTreeHub</h2>
-    <p>Get the latest version of HoaTreeHub and start your space adventure today!</p>
-    <a class="btn" href="#">Download for Windows</a>
-    <a class="btn" href="#">Download for Linux</a>
-  </section>
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <h2 id="popup-title">Preparing your file...</h2>
+      <div class="loader"></div>
+      <div id="popup-actions" class="hidden">
+        <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
+           class="btn" target="_blank">Download Now</a>
+        <button class="btn cancel" onclick="closePopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-  <footer>
-    <p>© 2025 HoaTreeHub. All rights reserved.</p>
-  </footer>
+  <script>
+    function openPopup() {
+      document.getElementById('popup').classList.remove('hidden');
+      document.getElementById('popup-title').innerText = "Preparing your file...";
+      document.querySelector('.loader').style.display = 'block';
+      document.getElementById('popup-actions').classList.add('hidden');
+
+      setTimeout(() => {
+        document.getElementById('popup-title').innerText = "Your file is ready!";
+        document.querySelector('.loader').style.display = 'none';
+        document.getElementById('popup-actions').classList.remove('hidden');
+      }, 5000);
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
