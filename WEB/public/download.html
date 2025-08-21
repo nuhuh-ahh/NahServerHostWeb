@@ -9,40 +9,38 @@
   <nav>
     <a href="/">Home</a>
     <a href="/feature">Features</a>
-    <a href="/howtouse">How To Use</a>
+    <a href="/howtouse">How to Use</a>
     <a href="/download">Download</a>
   </nav>
 
-  <div class="container">
-    <h1>Download Nah Server Host</h1>
-    <p>Get the latest version of our tool</p>
-    <button class="btn" onclick="showPopup()">Download</button>
-  </div>
+  <h1>⬇ Download Nah Server Host</h1>
+  <button onclick="startDownload()">Download</button>
 
-  <!-- Popup -->
   <div id="popup">
-    <p id="popupText">Preparing your file...</p>
-    <button onclick="cancelPopup()">Cancel</button>
+    <div id="popupContent">
+      <p id="popupText">Preparing your file...</p>
+      <button onclick="cancelDownload()">Cancel</button>
+      <a id="realDownloadBtn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
+         class="btn hidden">Click here to download</a>
+    </div>
   </div>
 
   <script>
-    let popupTimeout;
+    let timer;
+    function startDownload() {
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("popupText").innerText = "Preparing your file...";
+      document.getElementById("realDownloadBtn").classList.add("hidden");
 
-    function showPopup() {
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('popupText').innerText = "Preparing your file...";
-      popupTimeout = setTimeout(() => {
-        document.getElementById('popup').innerHTML = `
-          <p>Your file is ready!</p>
-          <a class="btn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" target="_blank">Download Now</a>
-          <button onclick="cancelPopup()">Close</button>
-        `;
+      timer = setTimeout(() => {
+        document.getElementById("popupText").innerText = "✅ Ready!";
+        document.getElementById("realDownloadBtn").classList.remove("hidden");
       }, 5000);
     }
 
-    function cancelPopup() {
-      clearTimeout(popupTimeout);
-      document.getElementById('popup').style.display = 'none';
+    function cancelDownload() {
+      clearTimeout(timer);
+      document.getElementById("popup").style.display = "none";
     }
   </script>
 </body>
