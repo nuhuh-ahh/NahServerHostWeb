@@ -1,49 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Download - Nah Server Host</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/feature">Features</a>
-    <a href="/howtouse">How To Use</a>
-    <a href="/download">Download</a>
-  </nav>
+/* Space background */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png"), 
+              radial-gradient(circle at 50% 50%, #0d1b2a, #000);
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+}
 
-  <div class="container">
-    <h1>Download Nah Server Host</h1>
-    <p>Get the latest version of our tool</p>
-    <button class="btn" onclick="showPopup()">Download</button>
-  </div>
+/* Navigation bar */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(0,0,0,0.5);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(5px);
+}
 
-  <!-- Popup -->
-  <div id="popup">
-    <p id="popupText">Preparing your file...</p>
-    <button onclick="cancelPopup()">Cancel</button>
-  </div>
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-  <script>
-    let popupTimeout;
+nav a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+}
 
-    function showPopup() {
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('popupText').innerText = "Preparing your file...";
-      popupTimeout = setTimeout(() => {
-        document.getElementById('popup').innerHTML = `
-          <p>Your file is ready!</p>
-          <a class="btn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" target="_blank">Download Now</a>
-          <button onclick="cancelPopup()">Close</button>
-        `;
-      }, 5000);
-    }
+/* Title */
+h1, h2 {
+  text-shadow: 0 0 15px rgba(0,255,255,0.6);
+}
 
-    function cancelPopup() {
-      clearTimeout(popupTimeout);
-      document.getElementById('popup').style.display = 'none';
-    }
-  </script>
-</body>
-</html>
+/* Buttons */
+button, .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 10px;
+  background: linear-gradient(135deg, #00eaff, #007bff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,255,255,0.6);
+}
+
+/* Popup overlay */
+#popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popupContent {
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  text-align: center;
+}
+
+.hidden { display: none; }
