@@ -56,18 +56,16 @@
 
     /* Popup box */
     .popup {
-      background: white;
       padding: 30px;
       border-radius: 12px;
       width: 400px;
       max-width: 90%;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       position: relative;
     }
 
     .progress-bar {
-      width: 100%;
+      width: 200%;
       background: #eee;
       border-radius: 8px;
       overflow: hidden;
@@ -153,7 +151,7 @@
     });
 
     finalDownloadBtn.addEventListener('click', () => {
-      window.location.href = '/path-to-your-file.zip'; // Thay link tải về
+      window.location.href = 'https://download1507.mediafire.com/a3eb7xozsvtgVUWhufx1niQ3SiNofgEZzxxcKxVZ0YRozhLHdR9y87STESDknVpsk0yhOO4JyEM0yAytDaOFWhTEPJbsDE-FBGGUl1-kygp8GnkDNeeQWbvLfv0ePIN2qkkyQCl7KoxRyn2DIrWi7BnkaNkcpiaPYDSASPPrIE01/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip'; // Thay link tải về
       overlay.style.display = 'none';
       document.body.style.background = '#fff';
       progressFill.style.width = '0%';
