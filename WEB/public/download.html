@@ -14,12 +14,13 @@
   </nav>
 
   <h1>⬇ Download Nah Server Host</h1>
-  <button onclick="startDownload()">Download</button>
+  <button class="btn" onclick="startDownload()">Download</button>
 
-  <div id="popup">
+  <!-- Popup -->
+  <div id="popup" class="hidden">
     <div id="popupContent">
       <p id="popupText">Preparing your file...</p>
-      <button onclick="cancelDownload()">Cancel</button>
+      <button class="btn" onclick="cancelDownload()">Cancel</button>
       <a id="realDownloadBtn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
          class="btn hidden">Click here to download</a>
     </div>
@@ -28,7 +29,7 @@
   <script>
     let timer;
     function startDownload() {
-      document.getElementById("popup").style.display = "flex";
+      document.getElementById("popup").classList.remove("hidden");
       document.getElementById("popupText").innerText = "Preparing your file...";
       document.getElementById("realDownloadBtn").classList.add("hidden");
 
@@ -40,7 +41,7 @@
 
     function cancelDownload() {
       clearTimeout(timer);
-      document.getElementById("popup").style.display = "none";
+      document.getElementById("popup").classList.add("hidden");
     }
   </script>
 </body>
