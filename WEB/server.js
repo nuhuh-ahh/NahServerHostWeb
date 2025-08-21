@@ -2,22 +2,31 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// serve static files (HTML, CSS, JS, downloads)
+// Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Route: homepage
+// Home
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Route: download file (ví dụ file C#)
+// Feature page
+app.get("/feature", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "feature.html"));
+});
+
+// How to use page
+app.get("/howtouse", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "howtouse.html"));
+});
+
+// Download route
 app.get("/download", (req, res) => {
-  const filePath = path.join(__dirname, "public", "downloads", "HoaTool.cs");
-  res.download(filePath, "HoaTool.cs"); // tên file khi tải về
+  res.download(path.join(__dirname, "HoaTool.cs"));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
