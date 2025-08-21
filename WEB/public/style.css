@@ -8,23 +8,33 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png"), 
+  background: url("https://www.transparenttextures.com/patterns/stardust.png"),
               radial-gradient(circle at 50% 50%, #0d1b2a, #000);
   color: #fff;
-  text-align: center;
   min-height: 100vh;
+}
+
+/* Container căn giữa nội dung */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
 }
 
 /* Navigation bar */
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   padding: 20px;
+  width: 100%;
   background: rgba(0,0,0,0.5);
   position: sticky;
   top: 0;
   backdrop-filter: blur(5px);
+  z-index: 10;
 }
 
 nav a {
@@ -32,6 +42,7 @@ nav a {
   color: #fff;
   font-weight: bold;
   transition: 0.3s;
+  font-size: 18px;
 }
 
 nav a:hover {
@@ -39,22 +50,40 @@ nav a:hover {
   text-shadow: 0 0 10px #00eaff;
 }
 
+/* Main section */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 /* Title */
-h1, h2 {
+h1 {
+  font-size: 3em;
+  text-shadow: 0 0 20px rgba(0,255,255,0.7);
+}
+h2 {
+  font-size: 1.7em;
   text-shadow: 0 0 15px rgba(0,255,255,0.6);
+}
+p {
+  font-size: 1.2em;
+  max-width: 600px;
 }
 
 /* Buttons */
 button, .btn {
   display: inline-block;
-  padding: 12px 25px;
+  padding: 15px 30px;
   margin: 10px;
   background: linear-gradient(135deg, #00eaff, #007bff);
   color: white;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
@@ -62,12 +91,12 @@ button, .btn {
 
 button:hover, .btn:hover {
   transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,255,255,0.6);
+  box-shadow: 0 8px 25px rgba(0,255,255,0.6);
 }
 
 /* Bounce animation */
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  0%,20%,50%,80%,100% {transform: translateY(0);}
   40% {transform: translateY(-8px);}
   60% {transform: translateY(-4px);}
 }
@@ -75,9 +104,8 @@ button:hover, .btn:hover {
 /* Popup overlay */
 .overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.2); /* mờ nhẹ background */
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.2);
   backdrop-filter: blur(3px);
   display: none;
   align-items: center;
@@ -88,12 +116,12 @@ button:hover, .btn:hover {
 
 .popup {
   background: #1a1a2e;
-  padding: 25px;
+  padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  box-shadow: 0 0 25px rgba(0,255,255,0.6);
   text-align: center;
   animation: zoomIn 0.3s ease;
-  max-width: 350px;
+  max-width: 400px;
   width: 90%;
 }
 
@@ -103,7 +131,7 @@ button:hover, .btn:hover {
   background: #333;
   border-radius: 10px;
   overflow: hidden;
-  margin: 15px auto;
+  margin: 20px auto;
   box-shadow: 0 0 10px rgba(0,255,255,0.4);
 }
 
@@ -117,7 +145,7 @@ button:hover, .btn:hover {
 /* Popup button */
 .popup button {
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 12px 25px;
   background: #2196F3;
   color: white;
   border: none;
@@ -136,25 +164,40 @@ button:hover, .btn:hover {
 }
 
 /* Animations */
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes zoomIn { from { transform: scale(0.8); opacity:0; } to { transform: scale(1); opacity:1; } }
+@keyframes fadeIn { from {opacity:0;} to{opacity:1;} }
+@keyframes zoomIn { from {transform: scale(0.8); opacity:0;} to{transform: scale(1); opacity:1;} }
 
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/feature">Features</a>
-  <a href="/howtouse">How to Use</a>
-  <a href="/download">Download</a>
-</nav>
+<div class="container">
+  <nav>
+    <a href="/">Home</a>
+    <a href="#feature">Features</a>
+    <a href="#howtouse">How to Use</a>
+    <a href="#download">Download</a>
+  </nav>
 
-<h1>🚀 Welcome to Nah Server Host</h1>
-<h2>Free & Simple Minecraft Server Hosting</h2>
-<p>Manage and run your Minecraft server easily with our tool.</p>
+  <div class="main-content">
+    <h1>🚀 Welcome to Nah Server Host</h1>
+    <h2>Free & Simple Minecraft Server Hosting</h2>
+    <p>Manage and run your Minecraft server easily with our tool.</p>
 
-<button id="downloadBtn" class="btn">Download Now</button>
+    <button id="downloadBtn" class="btn">Download Now</button>
+
+    <!-- Sections -->
+    <div id="feature" style="margin-top:80px;">
+      <h2>Features</h2>
+      <p>Fast, free, and easy-to-use Minecraft server hosting with one-click setup.</p>
+    </div>
+
+    <div id="howtouse" style="margin-top:80px;">
+      <h2>How to Use</h2>
+      <p>Simply download the tool, run it, and manage your Minecraft server in a few clicks.</p>
+    </div>
+  </div>
+</div>
 
 <!-- Popup overlay -->
 <div class="overlay" id="overlay">
@@ -175,42 +218,37 @@ const popupTitle = document.getElementById('popupTitle');
 const finalDownloadBtn = document.getElementById('finalDownloadBtn');
 
 downloadBtn.addEventListener('click', () => {
-  // Thêm animation bounce khi nhấn
+  // Bounce animation
   downloadBtn.style.animation = 'bounce 0.6s';
-  downloadBtn.addEventListener('animationend', () => {
-    downloadBtn.style.animation = '';
-  }, {once:true});
+  downloadBtn.addEventListener('animationend', () => { downloadBtn.style.animation=''; }, {once:true});
 
   overlay.style.display = 'flex';
-
-  const progressSteps = [1, 5, 19, 26, 41, 69, 91, 99, 100];
-  let i = 0;
-
-  function nextStep() {
-    if(i < progressSteps.length){
-      progressFill.style.width = progressSteps[i] + '%';
+  const progressSteps = [1,5,19,26,41,69,91,99,100];
+  let i=0;
+  function nextStep(){
+    if(i<progressSteps.length){
+      progressFill.style.width = progressSteps[i]+'%';
       i++;
-      setTimeout(nextStep, 500);
+      setTimeout(nextStep,500);
     } else {
       popupTitle.textContent = 'Files is ready!';
       finalDownloadBtn.classList.add('unlocked');
     }
   }
-
   nextStep();
 });
 
-finalDownloadBtn.addEventListener('click', () => {
-  window.location.href = '/path-to-your-file.zip'; // Thay link download
-  overlay.style.display = 'none';
-  progressFill.style.width = '0%';
-  popupTitle.textContent = 'Preparing your files...';
+finalDownloadBtn.addEventListener('click', ()=>{
+  window.location.href='/path-to-your-file.zip';
+  overlay.style.display='none';
+  progressFill.style.width='0%';
+  popupTitle.textContent='Preparing your files...';
   finalDownloadBtn.classList.remove('unlocked');
 });
 
 // Ngăn click phải chuột
-finalDownloadBtn.addEventListener('contextmenu', e => e.preventDefault());
-downloadBtn.addEventListener('contextmenu', e => e.preventDefault());
+finalDownloadBtn.addEventListener('contextmenu', e=>e.preventDefault());
+downloadBtn.addEventListener('contextmenu', e=>e.preventDefault());
 </script>
 
 </body>
