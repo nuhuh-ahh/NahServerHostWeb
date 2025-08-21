@@ -59,8 +59,8 @@ button:hover, .btn:hover {
   box-shadow: 0 8px 20px rgba(0,255,255,0.6);
 }
 
-/* Popup overlay */
-#popup {
+/* Popup overlay (for both progress & final popup) */
+#progressPopup, #finalPopup {
   display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -68,14 +68,44 @@ button:hover, .btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.4s ease;
 }
 
 #popupContent {
   background: #1a1a2e;
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0,255,255,0.6);
   text-align: center;
+  animation: zoomIn 0.3s ease;
 }
 
 .hidden { display: none; }
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  max-width: 250px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px auto;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+.progress-fill {
+  height: 20px;
+  background: linear-gradient(90deg, #00eaff, #007bff);
+  width: 0%;
+  transition: width 0.6s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
