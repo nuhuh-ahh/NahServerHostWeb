@@ -1,32 +1,34 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "public")));
+// serve file tĩnh từ /public
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Home
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+// router cho từng trang
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Feature page
-app.get("/feature", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "feature.html"));
+app.get('/download', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'download.html'));
 });
 
-// How to use page
-app.get("/howtouse", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "howtouse.html"));
+app.get('/feature', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'feature.html'));
 });
 
-// Download route
-app.get("/download", (req, res) => {
-  res.download(path.join(__dirname, "HoaTool.cs"));
+app.get('/howtouse', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'howtouse.html'));
+});
+
+// fallback cho các route không tồn tại
+app.use((req, res) => {
+  res.status(404).send('<h1>404 Not Found</h1><p>Trang bạn yêu cầu không tồn tại.</p>');
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server đang chạy tại http://localhost:${PORT}`);
 });
