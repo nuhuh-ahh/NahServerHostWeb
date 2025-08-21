@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nah Server Host</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      transition: background 0.3s;
-    }
+<meta charset="UTF-8">
+<title>Nah Server Host</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+}
 
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
+/* Nav */
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
 
-    h1 { font-size: 2.5em; }
-    h2 { font-size: 1.5em; color: #666; }
-    p { font-size: 1.2em; }
+h1 { font-size: 2.5em; }
+h2 { font-size: 1.5em; color: #666; }
+p { font-size: 1.2em; }
 
-    .btn {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 15px 30px;
-      background: #ff5f57;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-      text-decoration: none;
-      position: relative;
-    }
+.btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 15px 30px;
+  background: #ff5f57;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  position: relative;
+}
 
-    .btn:hover {
-      transform: translateY(-5px);
-      background: #ff2f2f;
-    }
+.btn:hover {
+  transform: translateY(-5px);
+  background: #ff2f2f;
+}
 
-    /* Overlay khi popup hiện */
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+/* Overlay chỉ hiển popup, không mờ background */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    /* Popup box */
-    .popup {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      width: 400px;
-      max-width: 90%;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      position: relative;
-    }
+/* Popup box */
+.popup {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+}
 
-    .progress-bar {
-      width: 100%;
-      background: #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      margin: 20px 0;
-    }
+/* Progress bar dài hơn 1.5x */
+.progress-bar {
+  width: 150%; /* tăng 1.5 lần */
+  max-width: none;
+  height: 20px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px auto;
+}
 
-    .progress-fill {
-      width: 0;
-      height: 20px;
-      background: #4caf50;
-      transition: width 0.3s;
-    }
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s;
+}
 
-    .popup button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
+/* Popup button */
+.popup button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
-    .popup button.unlocked {
-      background: #4caf50;
-      cursor: pointer;
-      pointer-events: auto;
-    }
-  </style>
+.popup button.unlocked {
+  background: #4caf50;
+  cursor: pointer;
+  pointer-events: auto;
+}
+</style>
 </head>
 <body>
   <nav>
@@ -112,7 +114,6 @@
   <h2>Free & Simple Minecraft Server Hosting</h2>
   <p>Manage and run your Minecraft server easily with our tool.</p>
 
-  <!-- Nút download mới dưới phần giới thiệu -->
   <button id="downloadBtn" class="btn">Download Now</button>
 
   <!-- Popup overlay -->
@@ -126,46 +127,44 @@
     </div>
   </div>
 
-  <script>
-    const downloadBtn = document.getElementById('downloadBtn');
-    const overlay = document.getElementById('overlay');
-    const progressFill = document.getElementById('progressFill');
-    const popupTitle = document.getElementById('popupTitle');
-    const finalDownloadBtn = document.getElementById('finalDownloadBtn');
+<script>
+const downloadBtn = document.getElementById('downloadBtn');
+const overlay = document.getElementById('overlay');
+const progressFill = document.getElementById('progressFill');
+const popupTitle = document.getElementById('popupTitle');
+const finalDownloadBtn = document.getElementById('finalDownloadBtn');
 
-    downloadBtn.addEventListener('click', () => {
-      overlay.style.display = 'flex';
-      document.body.style.background = 'rgba(0,0,0,0.3)';
+downloadBtn.addEventListener('click', () => {
+  overlay.style.display = 'flex';
 
-      const progressSteps = [1, 2, 4, 5, 12, 19, 26, 31, 39, 41, 50, 59, 65, 69, 72, 88, 91, 99, 100];
-      let i = 0;
+  const progressSteps = [1, 2, 4, 5, 12, 19, 26, 31, 39, 41, 50, 59, 65, 69, 72, 88, 91, 99, 100];
+  let i = 0;
 
-      function nextStep() {
-        if (i < progressSteps.length) {
-          progressFill.style.width = progressSteps[i] + '%';
-          i++;
-          setTimeout(nextStep, 1000);
-        } else {
-          popupTitle.textContent = 'Files is ready!';
-          finalDownloadBtn.classList.add('unlocked');
-        }
-      }
+  function nextStep() {
+    if (i < progressSteps.length) {
+      progressFill.style.width = progressSteps[i] + '%';
+      i++;
+      setTimeout(nextStep, 1100); // thời gian ngắn hơn để progress nhanh hơn
+    } else {
+      popupTitle.textContent = 'Files is ready!';
+      finalDownloadBtn.classList.add('unlocked');
+    }
+  }
 
-      nextStep();
-    });
+  nextStep();
+});
 
-    finalDownloadBtn.addEventListener('click', () => {
-      window.location.href = 'https://download1507.mediafire.com/a3eb7xozsvtgVUWhufx1niQ3SiNofgEZzxxcKxVZ0YRozhLHdR9y87STESDknVpsk0yhOO4JyEM0yAytDaOFWhTEPJbsDE-FBGGUl1-kygp8GnkDNeeQWbvLfv0ePIN2qkkyQCl7KoxRyn2DIrWi7BnkaNkcpiaPYDSASPPrIE01/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip'; // Thay link tải về
-      overlay.style.display = 'none';
-      document.body.style.background = '#fff';
-      progressFill.style.width = '0%';
-      popupTitle.textContent = 'Preparing your files...';
-      finalDownloadBtn.classList.remove('unlocked');
-    });
+finalDownloadBtn.addEventListener('click', () => {
+  window.location.href = 'https://download1507.mediafire.com/a3eb7xozsvtgVUWhufx1niQ3SiNofgEZzxxcKxVZ0YRozhLHdR9y87STESDknVpsk0yhOO4JyEM0yAytDaOFWhTEPJbsDE-FBGGUl1-kygp8GnkDNeeQWbvLfv0ePIN2qkkyQCl7KoxRyn2DIrWi7BnkaNkcpiaPYDSASPPrIE01/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip';
+  overlay.style.display = 'none';
+  progressFill.style.width = '0%';
+  popupTitle.textContent = 'Preparing your files...';
+  finalDownloadBtn.classList.remove('unlocked');
+});
 
-    // Ngăn người dùng click phải chuột
-    finalDownloadBtn.addEventListener('contextmenu', (e) => e.preventDefault());
-    downloadBtn.addEventListener('contextmenu', (e) => e.preventDefault());
-  </script>
+// Ngăn click phải chuột
+finalDownloadBtn.addEventListener('contextmenu', e => e.preventDefault());
+downloadBtn.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 </body>
 </html>
