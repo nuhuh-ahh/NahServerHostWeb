@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: url("https://cdn.wallpapersafari.com/65/7/0Su4mw.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+nav {
+  margin: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00eaff;
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 48px;
+  margin-top: 50px;
+  text-shadow: 0 0 20px #00eaff;
+}
+
+p {
+  font-size: 20px;
+  margin: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin-top: 20px;
+  background: #00eaff;
+  color: #000;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 15px #00eaff;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  background: #00c8ff;
+  box-shadow: 0 0 25px #00eaff, 0 0 50px #00eaff;
+}
