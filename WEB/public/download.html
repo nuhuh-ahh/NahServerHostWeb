@@ -4,44 +4,45 @@
   <meta charset="UTF-8">
   <title>Download - Nah Server Host</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
-<body class="space-theme">
-  <div class="content">
-    <h1>🚀 Download Center</h1>
-    <p>Click the button below to get your file.</p>
-    <button class="btn" onclick="openPopup()">Download</button>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/feature">Features</a>
+    <a href="/howtouse">How To Use</a>
+    <a href="/download">Download</a>
+  </nav>
+
+  <div class="container">
+    <h1>Download Nah Server Host</h1>
+    <p>Get the latest version of our tool</p>
+    <button class="btn" onclick="showPopup()">Download</button>
   </div>
 
   <!-- Popup -->
-  <div id="popup" class="popup hidden">
-    <div class="popup-content">
-      <h2 id="popup-title">Preparing your file...</h2>
-      <div class="loader"></div>
-      <div id="popup-actions" class="hidden">
-        <a href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
-           class="btn" target="_blank">Download Now</a>
-        <button class="btn cancel" onclick="closePopup()">Cancel</button>
-      </div>
-    </div>
+  <div id="popup">
+    <p id="popupText">Preparing your file...</p>
+    <button onclick="cancelPopup()">Cancel</button>
   </div>
 
   <script>
-    function openPopup() {
-      document.getElementById('popup').classList.remove('hidden');
-      document.getElementById('popup-title').innerText = "Preparing your file...";
-      document.querySelector('.loader').style.display = 'block';
-      document.getElementById('popup-actions').classList.add('hidden');
+    let popupTimeout;
 
-      setTimeout(() => {
-        document.getElementById('popup-title').innerText = "Your file is ready!";
-        document.querySelector('.loader').style.display = 'none';
-        document.getElementById('popup-actions').classList.remove('hidden');
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('popupText').innerText = "Preparing your file...";
+      popupTimeout = setTimeout(() => {
+        document.getElementById('popup').innerHTML = `
+          <p>Your file is ready!</p>
+          <a class="btn" href="https://download1507.mediafire.com/qyxa7omar7sgMd8TGMAe5YTdpGxsC2tUoU8LjpvbrLiAr-aZkJJJwEE3OriN8NCo-6IRDjNc_uVEmitOvEAjAanfRwZfIMLuB7AaZUW3zjc7_MIyq2a-JWVro6TqcDqKR2Knh9lmc-Lars21Fw6WVSaa3Gus6w-iVRRZ9FgI1ckM/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" target="_blank">Download Now</a>
+          <button onclick="cancelPopup()">Close</button>
+        `;
       }, 5000);
     }
 
-    function closePopup() {
-      document.getElementById('popup').classList.add('hidden');
+    function cancelPopup() {
+      clearTimeout(popupTimeout);
+      document.getElementById('popup').style.display = 'none';
     }
   </script>
 </body>
