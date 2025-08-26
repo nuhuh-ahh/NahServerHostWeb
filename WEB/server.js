@@ -1,30 +1,31 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
-// serve file tĩnh từ /public
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-// router cho từng trang
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get('/feature', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'feature.html'));
+app.get("/feature", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "feature.html"));
 });
 
-app.get('/howtouse', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'howtouse.html'));
+app.get("/howtouse", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "howtouse.html"));
 });
 
-// fallback cho các route không tồn tại
-app.use((req, res) => {
-  res.status(404).send('<h1>404 Not Found</h1><p>Trang bạn yêu cầu không tồn tại.</p>');
+app.get("/qna", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "qna.html"));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
+app.get("https://download1507.mediafire.com/qxlzxfcw4dtg4pegGeDV8ruaW3R90a2ZCJs66uO7-fwvRYfwP04YiMZftuCLzcoZSjlAqLltiUC5I1qzZXDSmQCdQsZCqcoZd3eMR_SwdWM9l79EsD-tehzn7R8vKpONTsgYoM8GQ2-KB8FRWGdRC6ED0dVtFtPyUnHQTuhY5MRn/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip", (req, res) => {
+  res.download(path.join(__dirname, "public", "Nah.zip"));
 });
