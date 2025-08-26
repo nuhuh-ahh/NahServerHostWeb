@@ -2,98 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nah Server Host</title>
+  <title>Home - Space Website</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      transition: background 0.3s;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    h1 { font-size: 2.5em; }
-    h2 { font-size: 1.5em; color: #666; }
-    p { font-size: 1.2em; }
-
-    .btn {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 15px 30px;
-      background: #ff5f57;
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
       color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s;
-      text-decoration: none;
-      position: relative;
+      transition: color 0.3s;
+    }
+    .close-btn:hover {
+      color: red;
     }
 
-    .btn:hover {
-      transform: translateY(-5px);
-      background: #ff2f2f;
-    }
-
-    /* Overlay khi popup hiện */
+    /* Overlay mờ phía sau popup */
     .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
       display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 998;
     }
 
-    /* Popup box */
+    /* Popup fix center */
     .popup {
-      padding: 30px;
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
       border-radius: 12px;
       width: 400px;
-      max-width: 90%;
-      text-align: center;
-      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      z-index: 999;
     }
 
     .progress-bar {
-      width: 200%;
-      background: #eee;
+      width: 80%;
+      background: #333;
       border-radius: 8px;
+      margin: 10px auto;
       overflow: hidden;
-      margin: 20px 0;
     }
-
-    .progress-fill {
-      width: 0;
+    .progress {
+      width: 0%;
       height: 20px;
-      background: #4caf50;
+      background: limegreen;
       transition: width 0.3s;
     }
 
-    .popup button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #2196F3;
+    /* added: neon effect cho text */
+    .glow-text {
+      font-family: 'Orbitron', sans-serif;
+      animation: neonGlow 2s infinite alternate;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    .popup button.unlocked {
-      background: #4caf50;
-      cursor: pointer;
-      pointer-events: auto;
     }
   </style>
 </head>
@@ -102,66 +74,78 @@
     <a href="/">Home</a>
     <a href="/feature">Features</a>
     <a href="/howtouse">How to Use</a>
+    <a href="/qna">QnA</a>
   </nav>
 
-  <h1>🚀 Welcome to Nah Server Host</h1>
-  <h2>Free & Simple Minecraft Server Hosting</h2>
-  <p>Manage and run your Minecraft server easily with our tool.</p>
+  <section style="text-align:center; padding:50px;">
+    <!-- added class glow-text -->
+    <h1 class="glow-text">👋Chào Mừng Đến Vs Website Của Teo:)👋</h1>
+    <p class="glow-text">✔️Được Phát Triển Bởi Corruption✔️</p>
+    <h1 class="glow-text">❗️Huh Is Bel And Gay❗️</h1>
+    <button id="downloadBtn">Download</button>
+  </section>
 
-  <!-- Nút download mới dưới phần giới thiệu -->
-  <button id="downloadBtn" class="btn">Download Now</button>
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Popup overlay -->
-  <div class="overlay" id="overlay">
-    <div class="popup">
-      <h2 id="popupTitle">Preparing your files...</h2>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <button id="finalDownloadBtn">Download that</button>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <h2 class="glow-text">Preparing your file...</h2> <!-- added glow-text -->
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
     </div>
+    <p id="progressText" class="glow-text">0%</p> <!-- added glow-text -->
+    
+    <button 
+      id="finalDownload" 
+      data-download-link="https://download1507.mediafire.com/c6u20tsg7q3g8PYawFDM1nQ6W_s7FObu4t1ORsesLJcMJgPvW5TGIx5XeI0xp_9j7eLLktRstLCmSEmcM_-m0pO_8EKpX17uofs_z4jqtDEy_YY1qnnZP-pB_yvxQpaicO5tRW_C42fgcRhg2eYXmTFASCs9Jd3_ZA9LAUOsdC1i/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip" 
+      disabled 
+      style="opacity:0.5;">
+      Download File
+    </button>
   </div>
 
   <script>
-    const downloadBtn = document.getElementById('downloadBtn');
-    const overlay = document.getElementById('overlay');
-    const progressFill = document.getElementById('progressFill');
-    const popupTitle = document.getElementById('popupTitle');
-    const finalDownloadBtn = document.getElementById('finalDownloadBtn');
+    const downloadBtn = document.getElementById("downloadBtn");
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const closePopup = document.getElementById("closePopup");
+    const progress = document.getElementById("progress");
+    const progressText = document.getElementById("progressText");
+    const finalDownload = document.getElementById("finalDownload");
 
-    downloadBtn.addEventListener('click', () => {
-      overlay.style.display = 'flex';
-      document.body.style.background = 'rgba(0,0,0,0.3)';
-
-      const progressSteps = [1, 5, 19, 26, 41, 69, 91, 99, 100];
-      let i = 0;
-
-      function nextStep() {
-        if (i < progressSteps.length) {
-          progressFill.style.width = progressSteps[i] + '%';
-          i++;
-          setTimeout(nextStep, 500);
-        } else {
-          popupTitle.textContent = 'Files is ready!';
-          finalDownloadBtn.classList.add('unlocked');
+    downloadBtn.addEventListener("click", () => {
+      popup.style.display = "block";
+      overlay.style.display = "block";
+      let percent = 0;
+      const interval = setInterval(() => {
+        percent += 10;
+        progress.style.width = percent + "%";
+        progressText.textContent = percent + "%";
+        if (percent >= 100) {
+          clearInterval(interval);
+          finalDownload.disabled = false;
+          finalDownload.style.opacity = 1;
+          finalDownload.textContent = "Click to Download";
         }
-      }
-
-      nextStep();
+      }, 300);
     });
 
-    finalDownloadBtn.addEventListener('click', () => {
-      window.location.href = 'https://download1507.mediafire.com/a3eb7xozsvtgVUWhufx1niQ3SiNofgEZzxxcKxVZ0YRozhLHdR9y87STESDknVpsk0yhOO4JyEM0yAytDaOFWhTEPJbsDE-FBGGUl1-kygp8GnkDNeeQWbvLfv0ePIN2qkkyQCl7KoxRyn2DIrWi7BnkaNkcpiaPYDSASPPrIE01/m5mspeb974pgtor/MC+Server+Host+By+Nah.zip'; // Thay link tải về
-      overlay.style.display = 'none';
-      document.body.style.background = '#fff';
-      progressFill.style.width = '0%';
-      popupTitle.textContent = 'Preparing your files...';
-      finalDownloadBtn.classList.remove('unlocked');
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+      overlay.style.display = "none";
     });
 
-    // Ngăn người dùng click phải chuột
-    finalDownloadBtn.addEventListener('contextmenu', (e) => e.preventDefault());
-    downloadBtn.addEventListener('contextmenu', (e) => e.preventDefault());
+    overlay.addEventListener("click", () => {
+      popup.style.display = "none";
+      overlay.style.display = "none";
+    });
+
+    finalDownload.addEventListener("click", () => {
+      const link = finalDownload.getAttribute("data-download-link");
+      window.location.href = link;
+    });
   </script>
 </body>
 </html>
