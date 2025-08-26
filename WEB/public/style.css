@@ -1,1 +1,117 @@
-/* Space background */ body { margin: 0; font-family: 'Poppins', sans-serif; background: url("https://www.transparenttextures.com/patterns/stardust.png"), radial-gradient(circle at 50% 50%, #0d1b2a, #000); color: #fff; text-align: center; min-height: 100vh; } /* Navigation bar */ nav { display: flex; justify-content: center; gap: 20px; padding: 20px; background: rgba(0,0,0,0.5); position: sticky; top: 0; backdrop-filter: blur(5px); } nav a { text-decoration: none; color: #fff; font-weight: bold; transition: 0.3s; } nav a:hover { color: #00eaff; text-shadow: 0 0 10px #00eaff; } /* Title */ h1, h2 { text-shadow: 0 0 15px rgba(0,255,255,0.6); } /* Buttons */ button, .btn { display: inline-block; padding: 12px 25px; margin: 10px; background: linear-gradient(135deg, #00eaff, #007bff); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 16px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; } button:hover, .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 20px rgba(0,255,255,0.6); } /* Popup overlay (for both progress & final popup) */ #progressPopup, #finalPopup { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 999; animation: fadeIn 0.4s ease; } #popupContent { background: #1a1a2e; padding: 25px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,255,0.6); text-align: center; animation: zoomIn 0.3s ease; } .hidden { display: none; } /* Progress Bar */ .progress-bar { width: 100%; max-width: 250px; background: #333; border-radius: 10px; overflow: hidden; margin: 15px auto; box-shadow: 0 0 10px rgba(0,255,255,0.4); } .progress-fill { height: 20px; background: linear-gradient(90deg, #00eaff, #007bff); width: 0%; transition: width 0.6s ease; } /* Animations */ @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png"), black;
+  color: white;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+/* Hiệu ứng glow lấp lánh */
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 5px #1e90ff, 0 0 10px #00bfff, 0 0 20px #1e90ff; }
+  50% { text-shadow: 0 0 15px #00bfff, 0 0 30px #1e90ff, 0 0 45px #00ffff; }
+  100% { text-shadow: 0 0 5px #1e90ff, 0 0 10px #00bfff, 0 0 20px #1e90ff; }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  animation: neonGlow 2s infinite alternate;
+}
+
+nav a:hover {
+  background: #1e90ff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px #1e90ff;
+}
+
+button, input[type="text"] {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+}
+
+button {
+  background: #1e90ff;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(30,144,255,0.8);
+  animation: neonGlow 2s infinite alternate;
+}
+
+button:hover {
+  background: #00bfff;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00bfff;
+}
+
+input[type="text"] {
+  background: #222;
+  color: white;
+  box-shadow: 0 0 8px rgba(30,144,255,0.5);
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+  animation: neonGlow 3s infinite alternate;
+}
+
+input[type="text"]:hover, input[type="text"]:focus {
+  transform: scale(1.02);
+  outline: none;
+  box-shadow: 0 0 15px #1e90ff;
+}
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.7);
+  animation: neonGlow 3s infinite alternate;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+  box-shadow: 0 0 10px rgba(0,191,255,0.5);
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #1e90ff;
+  transition: width 0.5s;
+  box-shadow: 0 0 15px #1e90ff inset;
+}
